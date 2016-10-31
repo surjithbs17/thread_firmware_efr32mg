@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:MDescriptors xmlns:model="http://www.silabs.com/ss/Studio.ecore">
+  <descriptors name="com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt" label="GNU ARM v4.9.3" description="&lt;p>GNU ARM Tools from Linaro&lt;/p>&lt;p>&lt;tt>arm-none-eabi-gcc (GNU Tools for ARM Embedded Processors) 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977]&lt;/tt>&lt;/p>&lt;p>&lt;tt>arm-none-eabi-g++ (GNU Tools for ARM Embedded Processors) 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977]&lt;/tt>&lt;/p>&lt;p>&lt;tt>GNU assembler (GNU Tools for ARM Embedded Processors) 2.24.0.20150921&lt;/tt>&lt;/p>&lt;p>&lt;tt>GNU ld (GNU Tools for ARM Embedded Processors) 2.24.0.20150921&lt;/tt>&lt;/p>&lt;p>&lt;tt>GNU ar (GNU Tools for ARM Embedded Processors) 2.24.0.20150921&lt;/tt>&lt;/p>">
+    <properties key="core.version" value="4.9.3.20150529"/>
+    <properties key="core.category" value="ARM (32-bit)"/>
+    <properties key="core.installationPath" value="file:/C:/SiliconLabs/SimplicityStudio/v4/developer/toolchains/gnu_arm/4.9_2015q3/"/>
+    <properties key="core.builtin" value="true"/>
+    <properties key="core.bundled" value="true"/>
+    <properties key="toolchain.cdtToolchainId" value="com.silabs.ide.si32.gcc.cdt.managedbuild.toolchain.exe"/>
+    <properties key="toolchain.cdtExeProjectTypeId" value="com.silabs.ide.si32.gcc.cdt.managedbuild.target.gnu.exe"/>
+    <properties key="toolchain.cdtStaticLibProjectTypeId" value="com.silabs.ide.si32.gcc.cdt.managedbuild.target.gnu.lib"/>
+    <properties key="toolchain.cdtSupportsParallelBuild" value="true"/>
+    <properties key="toolchain.cdtImportableToolchains" value="com.crt.advproject"/>
+    <properties key="toolchain.toolchainLegacyNameMatching" value="gnu gcc"/>
+    <properties key="core.partCompatibility" value="mcu.arm.*"/>
+    <properties key="core.preferred" value="true"/>
+    <properties key="core.autoEnable" value="true"/>
+    <properties key="core.detected" value="true"/>
+  </descriptors>
+  <descriptors name="com.silabs.ss.tool.ide.arm.toolchain.iar" label="IAR ARM" description="&lt;p>IAR ARM Tools&lt;/p>&lt;p>&lt;tt>   IAR ANSI C/C++ Compiler V7.30.1.7746/W32 for ARM&lt;/tt>&lt;/p>&lt;p>&lt;tt>    IAR Assembler V7.30.1.7746/W32 for ARM&lt;/tt>&lt;/p>&lt;p>&lt;tt>   IAR Archive Tool V9.17.0.113&lt;/tt>&lt;/p>&lt;p>&lt;tt>   IAR ELF Linker V7.30.1.7746/W32 for ARM&lt;/tt>&lt;/p>">
+    <properties key="core.version" value="7.30.1.7746"/>
+    <properties key="core.category" value="ARM (32-bit)"/>
+    <properties key="core.installationPath" value="file:/C:/Program%20Files%20(x86)/IAR%20Systems/Embedded%20Workbench%207.0/"/>
+    <properties key="core.builtin" value="true"/>
+    <properties key="core.bundled" value="false"/>
+    <properties key="toolchain.cdtToolchainId" value="iar.arm.toolchain.v6.1.0"/>
+    <properties key="toolchain.cdtExeProjectTypeId" value="iar.arm.toolchain.project.exe.v5.4.0"/>
+    <properties key="toolchain.cdtStaticLibProjectTypeId" value="iar.arm.toolchain.project.library.v5.4.0"/>
+    <properties key="toolchain.cdtPreferredBuilder" value="cdt.managedbuild.target.gnu.builder.base"/>
+    <properties key="toolchain.cdtSupportsParallelBuild" value="true"/>
+    <properties key="core.partCompatibility" value="mcu.arm"/>
+    <properties key="core.detected" value="true"/>
+  </descriptors>
+  <descriptors name="com.silabs.ss.tool.ide.c8051.toolchain.keil.cdt" label="Keil 8051 v9.53" description="&lt;p>Keil's 8051 build tools&lt;/p>&lt;p>&lt;tt>C51 COMPILER V9.53.0.0 - SN: Eval Version&lt;/tt>&lt;/p>&lt;p>&lt;tt>CX51 COMPILER V9.53.0.0 - SN: Eval Version&lt;/tt>&lt;/p>&lt;p>&lt;tt>A51 MACRO ASSEMBLER V8.02b - SN: Eval Version&lt;/tt>&lt;/p>&lt;p>&lt;tt>LX51 LINKER/LOCATER V4.66.30.0 - SN: Eval Version&lt;/tt>&lt;/p>&lt;p>&lt;tt>BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version&lt;/tt>&lt;/p>&lt;p>&lt;tt>LIB51 LIBRARY MANAGER V4.30.0.2&lt;/tt>&lt;/p>">
+    <properties key="core.version" value="9.53"/>
+    <properties key="core.category" value="8051 (8-bit)"/>
+    <properties key="core.installationPath" value="file:/C:/SiliconLabs/SimplicityStudio/v4/developer/toolchains/keil_8051/9.53/"/>
+    <properties key="core.builtin" value="true"/>
+    <properties key="core.bundled" value="true"/>
+    <properties key="toolchain.cdtToolchainId" value="com.silabs.ide.si8051.keil.toolchain.exe.default"/>
+    <properties key="toolchain.cdtExeProjectTypeId" value="com.silabs.ide.si8051.keil.exe"/>
+    <properties key="toolchain.cdtStaticLibProjectTypeId" value="com.silabs.ide.si8051.keil.lib"/>
+    <properties key="toolchain.cdtSupportsParallelBuild" value="false"/>
+    <properties key="core.partCompatibility" value="mcu.8051"/>
+    <properties key="core.preferred" value="true"/>
+    <properties key="core.autoEnable" value="true"/>
+    <properties key="core.detected" value="true"/>
+  </descriptors>
+  <descriptors name="com.silabs.ss.tool.toolchain.bgbuild" label="BgBuild v2.0.1" description="&lt;p>BgBuild from Silicon Labs&lt;/p>&lt;p>&lt;tt>bgbuild 2.0.1-1485&lt;/tt>&lt;/p>">
+    <properties key="core.version" value="2.0.1.1485"/>
+    <properties key="core.category" value="Bluetooth Tools"/>
+    <properties key="core.installationPath" value="file:/C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/ble/v2.0.1.0/protocol/bluetooth_2.0/bin/"/>
+    <properties key="core.builtin" value="true"/>
+    <properties key="toolchain.toolExecutablePath" value="bgbuild.exe"/>
+    <properties key="core.partCompatibility" value="mcu.arm.efr32.bg.*"/>
+    <properties key="core.preferred" value="true"/>
+    <properties key="core.autoEnable" value="true"/>
+    <properties key="bleToolchain.bgbuildParentSdkId" value="com.silabs.stack.ble:2.0.1.0_-1959641713"/>
+    <properties key="core.detected" value="true"/>
+  </descriptors>
+</model:MDescriptors>

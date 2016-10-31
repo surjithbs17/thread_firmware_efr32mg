@@ -1,0 +1,109 @@
+22:34:53 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+ 
+Building file: ../server-implementation.c
+Invoking: IAR C/C++ Compiler for ARM
+iccarm "../server-implementation.c" -o "server-implementation.o" --no_wrap_diagnostics -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/stack" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/app/rf4ce/include" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/app/util" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/Device/SiliconLabs/EFR32MG1P/Include" -IC:/Users/subh6068/SimplicityStudio/v4_workspace/server -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/app/thread/../.." -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/app/thread/../../stack" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/app/thread/../rf4ce/include" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/app/thread/../util" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base/hal/../../Device/SiliconLabs/EFR32MG1P/Include" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//hardware/kit/common/bsp" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//hardware/kit/EFR32MG1_BRD4151A/config" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base/hal/micro/cortexm3/common" -I"C:\Users\subh6068\SimplicityStudio\v4_workspace\server\external-generated-files" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base/hal/micro/cortexm3/efm32" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0/" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base/hal" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base/hal//plugin" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base/hal//micro/cortexm3/efm32" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base/hal//micro/cortexm3/efm32/config" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base/hal//micro/cortexm3/efm32/efr32" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../CMSIS/Include" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/common/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/config" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/dmadrv/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/emcode" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/gpiointerrupt/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/rtcdrv/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/rtcdrv/test" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/sleep/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/spidrv/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/tempdrv/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/uartdrv/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emdrv/ustimer/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../emlib/inc" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../middleware/glib" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../middleware/glib/glib" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../radio/rail_lib/chip/efr32/rf/common/cortex" -I"C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//platform/base//../radio/rail_lib/chip/efr32/rf/rfprotocol/ieee802154/cortex" -e --use_c++_inline --cpu Cortex-M4 --fpu VFPv4_sp --debug --dlib_config "C:/Program Files (x86)/IAR Systems/Embedded Workbench 7.0/arm/inc/c/DLib_Config_Normal.h" --endian little --cpu_mode thumb -Ohz '-DBOARD_BRD4151A=1' '-DEMBER_STACK_IP=1' '-DMFGLIB=1' '-DHAVE_TLS_JPAKE=1' '-DAPP_BTL=1' '-DBOARD_HEADER="thread-board.h"' '-DCONFIGURATION_HEADER="thread-configuration.h"' '-DPLATFORM_HEADER="platform/base/hal/micro/cortexm3/compiler/iar.h"' '-DEFR32MG1P=1' '-DEFR32MG1P232F256GM48=1' '-DEMBER_AF_API_EMBER_TYPES="stack/include/ember-types.h"' '-DMBEDTLS_CONFIG_FILE="stack/ip/tls/mbedtls/config.h"' '-DDEBUG_LEVEL=FULL_DEBUG' '-DAPPLICATION_TOKEN_HEADER="thread-token.h"' '-DCORTEXM3=1' '-DCORTEXM3_EFM32_MICRO=1' '-DCORTEXM3_EFR32_MICRO=1' '-DCORTEXM3_EFR32=1' '-DPHY_EFR32=1' --diag_suppress Pa050 --dependencies=m server-implementation.d
+
+   IAR ANSI C/C++ Compiler V7.30.1.7746/W32 for ARM
+   Copyright 1999-2014 IAR Systems AB.
+ 
+ 2 080 bytes of CODE  memory
+   279 bytes of CONST memory
+    64 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+Finished building: ../server-implementation.c
+ 
+Building target: server.out
+Invoking: IAR Linker for ARM
+ilinkarm  ./version-debug/version-debug.o  ./udp-cli/udp-cli.o  ./tftp-bootload-target/tftp-15-4.o ./tftp-bootload-target/tftp-bootload.o ./tftp-bootload-target/tftp-bootloader-15-4.o ./tftp-bootload-target/tftp-bootloader-server.o ./tftp-bootload-target/tftp-bootloader.o ./tftp-bootload-target/tftp-server.o ./tftp-bootload-target/tftp.o  ./stack/thread-stack/ember-ip-configuration.o  ./slaac-client/slaac-client.o  ./sim-eeprom1/EFR32/sim-eeprom.o  ./serial/EFR32/com.o ./serial/EFR32/ember-printf.o ./serial/EFR32/serial.o  ./scan-debug/scan-debug.o  ./network-management-cli/network-management-cli.o  ./main/main.o  ./led/EFR32/led.o  ./idle-sleep/idle-sleep.o  ./icmp-debug/icmp-debug.o  ./icmp-cli/icmp-cli.o  ./heartbeat/heartbeat.o  ./hal-library/EFR32/assert-crash-handlers.o ./hal-library/EFR32/crc.o ./hal-library/EFR32/cstartup-common.o ./hal-library/EFR32/endian.o ./hal-library/EFR32/faults-v7m.o ./hal-library/EFR32/isr-stubs.o ./hal-library/EFR32/mem-util.o ./hal-library/EFR32/mfg-token.o ./hal-library/EFR32/micro-common.o ./hal-library/EFR32/micro.o ./hal-library/EFR32/mpu.o ./hal-library/EFR32/random.o ./hal-library/EFR32/sleep-efm32.o ./hal-library/EFR32/token-def.o ./hal-library/EFR32/token.o  ./global-address-prefix-debug/global-address-prefix-debug.o  ./external-generated-files/bootloader-interface-app.o ./external-generated-files/bootloader-interface.o  ./emlib/em_adc.o ./emlib/em_cmu.o ./emlib/em_emu.o ./emlib/em_gpio.o ./emlib/em_int.o ./emlib/em_ldma.o ./emlib/em_leuart.o ./emlib/em_mpu.o ./emlib/em_msc.o ./emlib/em_prs.o ./emlib/em_rmu.o ./emlib/em_rtcc.o ./emlib/em_system.o ./emlib/em_timer.o ./emlib/em_usart.o ./emlib/em_wdog.o ./emlib/system_efr32mg1p.o  ./emdrv/dmadrv.o ./emdrv/gpiointerrupt.o ./emdrv/rtcdriver.o ./emdrv/sleep.o ./emdrv/spidrv.o ./emdrv/tempdrv.o ./emdrv/uartdrv.o ./emdrv/ustimer.o  ./diagnostic/EFR32/diagnostic.o  ./dhcp-client/dhcp-client.o  ./debug-print/debug-print.o  ./command-interpreter2/command-interpreter2-error.o ./command-interpreter2/command-interpreter2-util.o ./command-interpreter2/command-interpreter2.o  ./coap-dispatch/coap-dispatch.o  ./coap-cli/coap-cli.o  ./cli/cli.o  ./buzzer/EFR32/buzzer.o  ./button/EFR32/button.o  ./antenna-stub/antenna-stub.o  ./address-configuration-debug/address-configuration-debug.o  ./adc/EFR32/adc.o  ./server-implementation.o ./thread-bookkeeping.o ./thread-callback-stubs.o ./thread-callbacks.o ./thread-cli.o ./thread-coap-dispatch.o ./thread-events.o   -o "server.out" --config "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0/platform/base/hal/micro/cortexm3/efm32/iar-cfg.icf" --config_def APP_BTL=1 --no_wrap_diagnostics "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/mfglib-library-cortexm3-iar-efr32mg1p-efr32/mfglib-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/thread-stack-cortexm3-iar-efr32mg1p-efr32/thread-stack.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/dhcp-library-cortexm3-iar-efr32mg1p-efr32/dhcp-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/mbedtls-library-cortexm3-iar-efr32mg1p-efr32/mbedtls-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/sim-eeprom1-library-cortexm3-iar-efr32mg1p-efr32/sim-eeprom1-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/hal-library-cortexm3-iar-efr32mg1p-efr32/hal-library.a" --entry halEntryPoint --map "C:/Users/subh6068/SimplicityStudio/v4_workspace/server/IAR ARM - Default/server.map" --log_file "C:/Users/subh6068/SimplicityStudio/v4_workspace/server/IAR ARM - Default/server.log" --log initialization,modules,sections,veneers --diag_suppress=Lp012 --redirect _Printf=_PrintfSmall --redirect _Scanf=_ScanfFull  
+
+   IAR ELF Linker V7.30.1.7746/W32 for ARM
+   Copyright 2007-2014 IAR Systems AB.
+
+  178 124 bytes of readonly  code memory
+      512 bytes of readwrite code memory
+   13 160 bytes of readonly  data memory
+   25 386 bytes of readwrite data memory (+ 148 absolute)
+
+Errors: none
+Warnings: none
+
+Link time:   0.44 (CPU)   0.49 (elapsed)
+ielftool --srec --verbose "server.out" "server.s37"  
+
+   IAR ELF Tool V9.17.0.113 [BUILT at IAR]
+   Copyright 2007-2014 IAR Systems AB.
+
+Loading server.out
+Saving srec file to server.s37
+ielftool --ihex --verbose "server.out" "server.hex"  
+
+   IAR ELF Tool V9.17.0.113 [BUILT at IAR]
+   Copyright 2007-2014 IAR Systems AB.
+
+Loading server.out
+Saving ihex file to server.hex
+ielftool --bin --verbose "server.out" "server.bin"
+
+   IAR ELF Tool V9.17.0.113 [BUILT at IAR]
+   Copyright 2007-2014 IAR Systems AB.
+
+Loading server.out
+Saving binary file to server.bin
+ielftool warning: Adding zero padding in address range 0x40ac-0x40ff
+Finished building target: server.out
+ 
+make --no-print-directory post-build
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-postbuild.bat server
+" "
+"This converts S37 to Ember Bootload File format if a bootloader has been selected in AppBuilder"
+" "
+
+C:\Users\subh6068\SimplicityStudio\v4_workspace\server\IAR ARM - Default>cmd /C ""\em3xx_convert.exe" --chip efr32  "server.s37" "server.ebl" > "server-em3xx-convert-output.txt"" 
+'"\em3xx_convert.exe"' is not recognized as an internal or external command,
+operable program or batch file.
+ 
+22:35:16 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+make: Nothing to be done for `main-build'.
+ 
+22:40:40 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+make: Nothing to be done for `main-build'.
+ 
+16:38:42 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+make: Nothing to be done for `main-build'.
+ 
+16:50:05 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+make: Nothing to be done for `main-build'.
+ 
+17:41:35 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+make: Nothing to be done for `main-build'.
+ 
+17:41:45 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+make: Nothing to be done for `main-build'.
+ 
+17:42:34 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+make: Nothing to be done for `main-build'.
+ 
+19:12:57 **** Incremental Build of configuration IAR ARM - Default for project server ****
+make -j8 pre-build main-build 
+cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
+make: Nothing to be done for `main-build'.
+ 
