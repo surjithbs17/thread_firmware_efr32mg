@@ -1,0 +1,11 @@
+Basic ping
+
+1. Build the server and client code in same or different computer
+2. Launch Console in both client and server
+3. Check whether client is printing a message with join key, if not reprogram the client
+4. type the join key in server's console (Serial 1) [expect "join-key from client"]
+5. This will make the connection between these two
+6. type "info" in server node
+7. This will give the default ip address (local ip 0/1)
+8. Copy the local IP 0 and type ping command using that IP in client console [icmp ping "IP-Server"]
+9. This should show echo request message transfer from both server and client
