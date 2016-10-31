@@ -3131,3 +3131,30 @@ java.lang.IllegalArgumentException: Failed to convert architecture board to Stud
 
 !ENTRY org.eclipse.cdt.core 1 0 2016-10-30 21:22:28.700
 !MESSAGE Indexed 'client' (1 sources, 0 headers) in 0.058 sec: 107 declarations; 266 references; 1 unresolved inclusions; 7 syntax errors; 107 unresolved names (22%)
+
+!ENTRY com.silabs.foundation.core_rcp 1 0 2016-10-30 21:23:24.376
+!MESSAGE Generation successful!
+
+
+Files generated:
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-board.h
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-bookkeeping.h
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-bookkeeping.c
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-coap-dispatch.c
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-debug-print.h
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-events.c
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-token.h
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-callbacks.h
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-callback-stubs.c
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-callbacks.c
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-cli.c
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\thread-configuration.h
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\client-prebuild.bat
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\client-postbuild.bat
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\client.ewd
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\client.ewp
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client\.\client.eww
+
+Files always updated:
+   C:\Users\subh6068\SimplicityStudio\v4_workspace\client
+
