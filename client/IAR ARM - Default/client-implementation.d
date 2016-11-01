@@ -152,3 +152,5 @@ client-implementation.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thr
 client-implementation.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0\platform\emlib\inc\em_emu.h
 client-implementation.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0\platform\base\hal\micro\cortexm3\efm32\config\tempdrv_config.h
 client-implementation.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0\protocol\thread_2.0\app\thread\plugin\udp-debug\udp-debug.c
+client-implementation.o: C:\Users\subh6068\SimplicityStudio\v4_workspace\client\sensor-control\inc\sensor_control.h
+client-implementation.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0\platform\base\hal\micro\cortexm3\diagnostic.h

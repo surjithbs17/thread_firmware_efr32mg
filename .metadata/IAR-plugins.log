@@ -1,1 +1,1 @@
-21:21:59,062 [main] INFO com.iar.cdt.generic.toolchain.info.SdkToolchainInfo  - Using toolchain at C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\bin, version 7.30.1.7746
+19:33:23,368 [Worker-11] INFO com.iar.cdt.generic.toolchain.info.SdkToolchainInfo  - Using toolchain at C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\bin, version 7.30.1.7746

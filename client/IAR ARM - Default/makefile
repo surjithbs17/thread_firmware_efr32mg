@@ -15,6 +15,7 @@ RM := rm -rf
 -include slaac-client/subdir.mk
 -include sim-eeprom1/EFR32/subdir.mk
 -include serial/EFR32/subdir.mk
+-include sensor-control/subdir.mk
 -include scan-debug/subdir.mk
 -include network-management-cli/subdir.mk
 -include main/subdir.mk
@@ -22,6 +23,7 @@ RM := rm -rf
 -include idle-sleep/subdir.mk
 -include icmp-debug/subdir.mk
 -include icmp-cli/subdir.mk
+-include i2c-driver/EFR32/subdir.mk
 -include heartbeat/subdir.mk
 -include hal-library/EFR32/subdir.mk
 -include global-address-prefix-debug/subdir.mk
@@ -40,6 +42,7 @@ RM := rm -rf
 -include antenna-stub/subdir.mk
 -include address-configuration-debug/subdir.mk
 -include adc/EFR32/subdir.mk
+-include Si7021/EFR32/subdir.mk
 -include subdir.mk
 -include objects.mk
 

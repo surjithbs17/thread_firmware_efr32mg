@@ -1,4 +1,3 @@
-// Copyright 2015 Silicon Laboratories, Inc.
 
 #include PLATFORM_HEADER
 #include CONFIGURATION_HEADER
@@ -16,6 +15,7 @@
 
 #define ALIAS(x) x##Alias
 #include "app/thread/plugin/udp-debug/udp-debug.c"
+#include "sensor-control/inc/sensor_control.h"
 
 // WARNING: This sample application generates a human-readable (i.e., ASCII)
 // join key based on a simple hash of the EUI64 of the node.  This method is
@@ -316,7 +316,31 @@ static void reportDataToServer(void)
 
   assert(state == REPORT_DATA_TO_SERVER);
 
+
+
+  uint32_t sensorData=0;
+      if ((sensorData=fetchSensorData(SENSOR_TYPE_TEMP_Si7021))==ERR_READ_SENSOR)
+      {
+    	  emberAfCorePrintln("Error in measurement");
+      }
+      else
+      {
+    	  emberAfCorePrintln("Temperature Measured %d",sensorData);
+
+      }
+
+
+
+
+
+
+
+
+
+
+
   data = getTemp_mC();
+  data = sensorData;
 
   emberAfCorePrint("Reporting %ld to server at ", data);
   emberAfCoreDebugExec(emberAfPrintIpv6Address(&server));
