@@ -16,6 +16,7 @@
 #define ALIAS(x) x##Alias
 #include "app/thread/plugin/udp-debug/udp-debug.c"
 #include "sensor-control/inc/sensor_control.h"
+#include <../B2Bprotocol/B2Bprotocol.h>
 
 // WARNING: This sample application generates a human-readable (i.e., ASCII)
 // join key based on a simple hash of the EUI64 of the node.  This method is
@@ -313,8 +314,14 @@ static void reportDataToServer(void)
 
   EmberStatus status;
   int32_t data;
-
+  //char messageRX[]="chinmay surjith asc ascasca";
+  char messageRX[500]="# 0 0 0 0 234:234:234:24 234:234:2342:22 32 $";
+  char *messageTx=NULL;
+  char *tempMessage = "test data";
+  //char messageRX[1000]="$|0|0|0|0|234:234:234:24|234:234:2342:22|#";
   assert(state == REPORT_DATA_TO_SERVER);
+  packet TxPacket;
+
 
 
 
@@ -325,24 +332,25 @@ static void reportDataToServer(void)
       }
       else
       {
-    	  emberAfCorePrintln("Temperature Measured %d",sensorData);
+    	  emberAfCorePrintln("Temperature Measured%d",sensorData);
 
       }
-
-
-
-
-
-
-
-
-
-
-
   data = getTemp_mC();
   data = sensorData;
 
-  emberAfCorePrint("Reporting %ld to server at ", data);
+  //Frame Analysis of input message
+  emberAfCorePrint("Frame Analysis  ");
+  TxPacket=FrameAnalysis(messageRX);
+  emberAfCorePrint("Tx Packet");
+  printPacket(TxPacket);
+
+  //formpacket(TxPacket);// Formulate Message to be send
+  messageTx=formpacket(TxPacket);// Formulate Message to be send
+  emberAfCorePrint("Send Tx Packet %s\n",messageTx);
+
+
+  //emberAfCorePrint("Split the message from server ");
+  //splitPacket(messageRX);
   emberAfCoreDebugExec(emberAfPrintIpv6Address(&server));
   emberAfCorePrintln("");
 
@@ -350,11 +358,15 @@ static void reportDataToServer(void)
   // reliably reconstructed by the server.
   data = HTONL(data);
 
+//  status = emberCoapPost(&server,                         clientReportUri,                         //(const uint8_t *)&data,						 (const char *)messageRX,                          sizeof(messageRX),                        processServerDataAck);
+
   status = emberCoapPost(&server,
-                         clientReportUri,
-                         (const uint8_t *)&data,
-                         sizeof(data),
-                         processServerDataAck);
+                           clientReportUri,
+                           (const char *)&tempMessage,
+                            sizeof(tempMessage),
+                           processServerDataAck);
+
+
   if (status == EMBER_SUCCESS) {
     setNextState(WAIT_FOR_DATA_CONFIRMATION);
   } else {

@@ -1,8 +1,8 @@
-19:12:57 **** Incremental Build of configuration IAR ARM - Default for project server ****
+20:24:29 **** Build of configuration IAR ARM - Default for project server ****
 make -j8 pre-build main-build 
 cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\server/server-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\server
 make: Nothing to be done for `main-build'.
  
 
-19:13:00 Build Finished (took 2s.691ms)
+20:24:30 Build Finished (took 750ms)
 

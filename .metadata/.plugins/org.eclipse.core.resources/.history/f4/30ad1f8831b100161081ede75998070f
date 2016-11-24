@@ -1,0 +1,210 @@
+/*
+ * B2Bprotocol.c
+ *
+ *  Created on: Nov 21, 2016
+ *      Author: Chinmay Shah
+ */
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+#include EMBER_AF_API_EVENT_QUEUE
+#include EMBER_AF_API_HAL
+
+#include <../B2Bprotocol/B2Bprotocol.h>
+#include "sensor-control/inc/sensor_control.h"
+#include "thread-bookkeeping.h"
+#include "stdio.h"
+#include <string.h>
+
+// If printing is enabled, we will print some diagnostic information about the
+// most recent reset and also during runtime.  On some platforms, extended
+// diagnostic information is available.
+#if defined(EMBER_AF_API_SERIAL) && defined(EMBER_AF_PRINT_ENABLE)
+  #ifdef EMBER_AF_API_DIAGNOSTIC_CORTEXM3
+    #include EMBER_AF_API_DIAGNOSTIC_CORTEXM3
+  #endif
+  static void printResetInformation(void);
+  #define PRINT_RESET_INFORMATION printResetInformation
+  #define emberAfGuaranteedPrint(...) \
+    emberSerialGuaranteedPrintf(APP_SERIAL, __VA_ARGS__)
+  #define emberAfGuaranteedPrintln(format, ...) \
+    emberSerialGuaranteedPrintf(APP_SERIAL, format "\r\n", __VA_ARGS__);
+#else
+  #define PRINT_RESET_INFORMATION()
+  #define emberAfGuaranteedPrint(...)
+  #define emberAfGuaranteedPrintln(...)
+#endif
+
+
+//packet TxPacket;
+
+unsigned char * formpacket(packet sendPack){
+	unsigned char sendMessage[MAXPACKETSIZE];
+
+
+	sprintf(sendMessage,"%c|%d|%d|%d|%d|%s|%s|%c|",
+				START_BYTE,
+				sendPack.commandType,
+				sendPack.interfaceType,
+				sendPack.subinterfaceType,
+				sendPack.interfaceID,
+				sendPack.destnIPAddress,
+				sendPack.srcIPAddress,
+				sendPack.data,
+				STOP_BYTE
+			);//convert into a single packet
+
+
+
+return sendMessage;
+
+}
+
+
+packet splitPacket(char inputMessage){
+
+	char startByte,stopByte;
+	packet splitPacket;
+	sscanf(inputMessage,"%c|%d|%d|%d|%d|%s|%s|%c|",
+					&startByte,
+					splitPacket.commandType,
+					splitPacket.interfaceType,
+					splitPacket.subinterfaceType,
+					splitPacket.interfaceID,
+					splitPacket.destnIPAddress,
+					splitPacket.srcIPAddress,
+					splitPacket.data,
+					&stopByte
+				);//convert into a single packet
+
+	return splitPacket;
+}
+
+
+void printPacket (packet printPacket){
+
+	char startByte,stopByte;
+	packet splitPacket;
+	emberAfGuaranteedPrintln("%c|%d|%d|%d|%d|%s|%s|%c|",
+					&startByte,
+					printPacket.commandType,
+					printPacket.interfaceType,
+					printPacket.subinterfaceType,
+					printPacket.interfaceID,
+					printPacket.destnIPAddress,
+					printPacket.srcIPAddress,
+					printPacket.data,
+					&stopByte
+				);//convert in
+
+
+}
+
+uint32_t ReadSensor(packet Rxpacket){
+	uint32_t sensorData=0;
+
+	switch(Rxpacket.subinterfaceType){
+		case(subinterface_type_Sensor_Temp):
+			//Basic Calling Temperature and humidity measurement
+
+				if ((sensorData=fetchSensorData(SENSOR_TYPE_TEMP_Si7021))==ERR_READ_SENSOR)
+				{
+					emberAfGuaranteedPrintln("Error in measurement",0);
+				}
+				else
+				{
+					emberAfGuaranteedPrintln("Temperature Measured %d",sensorData,0);
+				}
+				break;
+		case(subinterface_type_Sensor_Hum):
+				sensorData=0;
+				if ((sensorData=fetchSensorData(SENSOR_TYPE_RH_Si7021))==ERR_READ_SENSOR)
+				{
+					emberAfGuaranteedPrintln("Error in measurement",0);
+				}
+				else
+				{
+					emberAfGuaranteedPrintln("Temperature Measured %d",sensorData,0);
+				}
+				break;
+
+		default:
+				emberAfGuaranteedPrintln("Temperature Measured %d",sensorData,0);
+
+
+	}
+
+	return sensorData;
+}
+
+
+
+packet FrameAnalysis(char RxMessage){
+
+	packet RxPacket;
+	packet TxPacket;
+	// Message Received
+	emberAfGuaranteedPrintln("In Frame Analysis",0);
+	emberAfGuaranteedPrintln("Split %s",RxMessage,0);
+
+
+	//split the packet received
+	RxPacket=splitPacket(RxMessage);
+	PacketStatus_TypeDef error_type=packet_success;
+
+
+	//Print the split Message
+	emberAfGuaranteedPrintln("Command Type %s",RxPacket.commandType,0);
+	switch(RxPacket.commandType){
+		case(Read_cmd):
+						emberAfGuaranteedPrintln("Call Read",0);
+						break;
+		case(Reply_cmd):
+						emberAfGuaranteedPrintln("Call Reply",0);
+						break;
+		case(Write_cmd):
+						emberAfGuaranteedPrintln("Call Write",0);
+						break;
+
+		case(Execute_cmd):
+						emberAfGuaranteedPrintln("Call Execute Command",0);
+						break;
+		default:
+						error_type=packet_command_err;
+						emberAfGuaranteedPrintln("Can't decode Command Type ",0);
+	}
+
+	if(error_type == packet_success){	//Check the Type of Sensor
+		emberAfGuaranteedPrintln("Type of Interface %s",RxPacket.interfaceType,0);
+		switch(RxPacket.interfaceType){
+			case(interface_type_Actuator):
+									emberAfGuaranteedPrintln("Actuator",0);
+									TxPacket.data=ReadSensor(RxPacket);
+									break;
+			case(interface_type_Sensor):
+									emberAfGuaranteedPrintln("Sensor",0);
+									TxPacket.data=ReadSensor(RxPacket);
+									break;
+			default:
+					error_type=packet_interface_err;
+					emberAfGuaranteedPrintln("Default choice ",0);
+		}
+
+	}
+
+	//copy the packet if packet decode is success
+	if(error_type == packet_success){
+
+		//copy initial same contents of Rx to Tx
+			TxPacket.commandType=RxPacket.commandType;
+			TxPacket.interfaceType=RxPacket.interfaceType;
+			TxPacket.subinterfaceType=RxPacket.subinterfaceType;
+			TxPacket.interfaceID=RxPacket.interfaceID;
+			TxPacket.destnIPAddress=RxPacket.destnIPAddress;
+			TxPacket.srcIPAddress=RxPacket.srcIPAddress;
+
+	}
+	emberAfGuaranteedPrintln("Completed the Frame Analysis",0);
+
+	return TxPacket;
+}

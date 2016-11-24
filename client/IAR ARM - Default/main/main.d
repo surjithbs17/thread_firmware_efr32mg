@@ -148,4 +148,5 @@ main/main.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0
 main/main.o: C:\Users\subh6068\SimplicityStudio\v4_workspace\client\thread-bookkeeping.h
 main/main.o: C:\Users\subh6068\SimplicityStudio\v4_workspace\client\sensor-control\inc\sensor_control.h
 main/main.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0\platform\base\hal\micro\cortexm3\diagnostic.h
+main/main.o: C:\Users\subh6068\SimplicityStudio\v4_workspace\client\B2Bprotocol\B2Bprotocol.h
 main/main.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0\platform\base\hal\plugin\serial\serial.h

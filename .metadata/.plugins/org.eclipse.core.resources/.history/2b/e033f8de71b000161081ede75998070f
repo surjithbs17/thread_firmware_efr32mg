@@ -1,0 +1,65 @@
+/*
+ * B2Bprotocol.h
+ *
+ *  Created on: Nov 21, 2016
+ *      Author: Chinmay Shah
+ */
+
+#ifndef B2BPROTOCOL_B2BPROTOCOL_H_
+#define B2BPROTOCOL_B2BPROTOCOL_H_
+
+
+//#define startTypeLenght 2
+#define commandTypeLenght 2
+#define interfaceTypeLenght 3
+#define sensorTypeLenght 3
+#define sensorIDLenght
+#define dataLenght 2
+//define stopTypeLenght 2
+
+#define START_BYTE '$'
+#define STOP_BYTE '#'
+
+//structure from frame for packet data (Response)
+typedef struct packetFormat{
+	unsigned char start;
+	unsigned char commandType[commandTypeLenght];
+	unsigned char interface[interfaceTypeLenght];
+	//flagPacket FP;
+	unsigned char sensorType[sensorTypeLenght];
+	unsigned char sensorID[sensorIDLenght];
+	unsigned char destnIPAddress;
+	unsigned char srcIPAddress;
+	//unsigned char originAddress;
+	int data[dataLenght];
+	unsigned char stop;
+}packet;
+
+
+// Packet Location
+typedef enum PDA{
+	start_loc,
+	cmdtype_loc,
+	interface_loc,
+	sensorTyoe_loc,
+	sensorID_loc,
+	destIPAddress_loc,
+	srcIPAddress_loc,
+	data_loc,
+	stop_loc
+}packetLocation;
+
+
+void Formpacket(){
+
+}
+
+
+void packetSplit(){
+
+}
+
+
+
+
+#endif /* B2BPROTOCOL_B2BPROTOCOL_H_ */

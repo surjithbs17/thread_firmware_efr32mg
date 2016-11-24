@@ -1,0 +1,41 @@
+/*
+ * B2Bprotocol.c
+ *
+ *  Created on: Nov 21, 2016
+ *      Author: Chinmay Shah
+ */
+#include <../B2Bprotocol.h>
+
+
+
+
+
+char * formpacket(packet sendPack){
+	unsigned char sendMessage[MAXPACKETSIZE];
+
+
+	sprintf(sendMessage,"%c|%d|%d|%d|%d|%s|%s|%c|",
+				START_BYTE,
+				sendPack.commandType,
+				sendPack.interfaceType,
+				sendPack.subinterfaceType,
+				sendPack.interfaceID,
+				sendPack.destnIPAddress,
+				sendPack.srcIPAddress,
+				sendPack.data,
+				STOP_BYTE
+			);//convert into a single packet
+
+
+
+return sendMessage;
+
+}
+
+
+void splitPacket(){
+
+}
+
+
+

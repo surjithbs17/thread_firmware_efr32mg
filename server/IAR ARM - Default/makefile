@@ -8,38 +8,6 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include version-debug/subdir.mk
--include udp-cli/subdir.mk
--include tftp-bootload-target/subdir.mk
--include stack/thread-stack/subdir.mk
--include slaac-client/subdir.mk
--include sim-eeprom1/EFR32/subdir.mk
--include serial/EFR32/subdir.mk
--include scan-debug/subdir.mk
--include network-management-cli/subdir.mk
--include main/subdir.mk
--include led/EFR32/subdir.mk
--include idle-sleep/subdir.mk
--include icmp-debug/subdir.mk
--include icmp-cli/subdir.mk
--include heartbeat/subdir.mk
--include hal-library/EFR32/subdir.mk
--include global-address-prefix-debug/subdir.mk
--include external-generated-files/subdir.mk
--include emlib/subdir.mk
--include emdrv/subdir.mk
--include diagnostic/EFR32/subdir.mk
--include dhcp-client/subdir.mk
--include debug-print/subdir.mk
--include command-interpreter2/subdir.mk
--include coap-dispatch/subdir.mk
--include coap-cli/subdir.mk
--include cli/subdir.mk
--include buzzer/EFR32/subdir.mk
--include button/EFR32/subdir.mk
--include antenna-stub/subdir.mk
--include address-configuration-debug/subdir.mk
--include adc/EFR32/subdir.mk
 -include subdir.mk
 -include objects.mk
 

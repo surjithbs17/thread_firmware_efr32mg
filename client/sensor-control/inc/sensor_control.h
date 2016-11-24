@@ -40,6 +40,7 @@ uint32_t readHumidity();
 uint32_t readTemperature(unsigned char type);
 void setHeater(unsigned char heaterON);
 void initilizationSmartHome();
+uint32_t fetchSensorData(char sensorType);
 
 
 

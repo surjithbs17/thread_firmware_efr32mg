@@ -1,0 +1,62 @@
+/*
+ * B2Bprotocol.h
+ *
+ *  Created on: Nov 21, 2016
+ *      Author: Chinmay Shah
+ */
+
+#ifndef B2BPROTOCOL_B2BPROTOCOL_H_
+#define B2BPROTOCOL_B2BPROTOCOL_H_
+
+
+
+#define commandTypeLenght 2
+#define interfaceTypeLenght 3
+#define sensorIDLenght 3
+
+
+enum
+
+//structure from frame for packet data (Response)
+typedef struct packetFormat{
+	unsigned char commandType[commandTypeLenght];
+	unsigned char interface[interfaceTypeLenght];
+	//flagPacket FP;
+	unsigned char sensorType;
+	unsigned char sensorID;
+	unsigned char prsntAddress;
+	unsigned char originAddress;
+	unsigned char destAddress;
+	float maxtrixData[dataLength];
+	unsigned char stop;
+}packetData;
+
+
+//Array contents
+typedef enum PDA{
+	start,
+	FPlength,
+	type,
+	packetNumber,
+	prsntAddress,//Present Packet transmission
+	originAddress,//Original Packet transmission
+	//timestamp,
+	//Add all new data above this  as Floating point data address (conversion) depends on destAddress
+	destAddress,
+	dataSize,
+	//Data of Matrix
+}packetData_array;
+
+//structure from frame for packet data(Request)
+typedef struct PDR{
+	unsigned char start;
+	unsigned char FPlength;
+	unsigned char type;
+	unsigned char packetNumber;
+	unsigned char prsntAddress;
+	unsigned char originAddress;
+	unsigned char destAddress;
+	unsigned char stop;
+}packetReq;
+
+#endif /* B2BPROTOCOL_B2BPROTOCOL_H_ */

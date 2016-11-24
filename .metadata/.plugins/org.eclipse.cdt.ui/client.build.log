@@ -1,4 +1,4 @@
-20:38:48 **** Incremental Build of configuration IAR ARM - Default for project client ****
+23:06:05 **** Incremental Build of configuration IAR ARM - Default for project client ****
 make -j8 pre-build main-build 
 cmd //c C:\Users\subh6068\SimplicityStudio\v4_workspace\client/client-prebuild.bat C:\Users\subh6068\SimplicityStudio\v4_workspace\client
  
@@ -9,11 +9,11 @@ iccarm "../client-implementation.c" -o "client-implementation.o" --no_wrap_diagn
    IAR ANSI C/C++ Compiler V7.30.1.7746/W32 for ARM
    Copyright 1999-2014 IAR Systems AB.
 
-        if ((sensorData=fetchSensorData(SENSOR_TYPE_TEMP_Si7021))!=ERR_READ_SENSOR)
-                        ^
-"C:\Users\subh6068\SimplicityStudio\v4_workspace\client\client-implementation.c",322  Warning[Pe223]: function "fetchSensorData" declared implicitly
+    status = emberCoapPost(&server,
+             ^
+"C:\Users\subh6068\SimplicityStudio\v4_workspace\client\client-implementation.c",363  Warning[Pe167]: argument of type "char const *" is incompatible with parameter of type "unsigned char const *"
  
- 1 944 bytes of CODE  memory
+ 2 594 bytes of CODE  memory
    211 bytes of CONST memory
     48 bytes of DATA  memory
 
@@ -23,20 +23,20 @@ Finished building: ../client-implementation.c
  
 Building target: client.out
 Invoking: IAR Linker for ARM
-ilinkarm  ./version-debug/version-debug.o  ./udp-cli/udp-cli.o  ./tftp-bootload-target/tftp-15-4.o ./tftp-bootload-target/tftp-bootload.o ./tftp-bootload-target/tftp-bootloader-15-4.o ./tftp-bootload-target/tftp-bootloader-server.o ./tftp-bootload-target/tftp-bootloader.o ./tftp-bootload-target/tftp-server.o ./tftp-bootload-target/tftp.o  ./stack/thread-stack/ember-ip-configuration.o  ./slaac-client/slaac-client.o  ./sim-eeprom1/EFR32/sim-eeprom.o  ./serial/EFR32/com.o ./serial/EFR32/ember-printf.o ./serial/EFR32/serial.o  ./sensor-control/sensor_control.o  ./scan-debug/scan-debug.o  ./network-management-cli/network-management-cli.o  ./main/main.o  ./led/EFR32/led.o  ./idle-sleep/idle-sleep.o  ./icmp-debug/icmp-debug.o  ./icmp-cli/icmp-cli.o  ./i2c-driver/EFR32/em_i2c.o ./i2c-driver/EFR32/i2c-driver.o ./i2c-driver/EFR32/i2cspm.o  ./heartbeat/heartbeat.o  ./hal-library/EFR32/assert-crash-handlers.o ./hal-library/EFR32/crc.o ./hal-library/EFR32/cstartup-common.o ./hal-library/EFR32/endian.o ./hal-library/EFR32/faults-v7m.o ./hal-library/EFR32/isr-stubs.o ./hal-library/EFR32/mem-util.o ./hal-library/EFR32/mfg-token.o ./hal-library/EFR32/micro-common.o ./hal-library/EFR32/micro.o ./hal-library/EFR32/mpu.o ./hal-library/EFR32/random.o ./hal-library/EFR32/sleep-efm32.o ./hal-library/EFR32/token-def.o ./hal-library/EFR32/token.o  ./global-address-prefix-debug/global-address-prefix-debug.o  ./external-generated-files/bootloader-interface-app.o ./external-generated-files/bootloader-interface.o  ./emlib/em_adc.o ./emlib/em_cmu.o ./emlib/em_emu.o ./emlib/em_gpio.o ./emlib/em_int.o ./emlib/em_ldma.o ./emlib/em_leuart.o ./emlib/em_mpu.o ./emlib/em_msc.o ./emlib/em_prs.o ./emlib/em_rmu.o ./emlib/em_rtcc.o ./emlib/em_system.o ./emlib/em_timer.o ./emlib/em_usart.o ./emlib/em_wdog.o ./emlib/system_efr32mg1p.o  ./emdrv/dmadrv.o ./emdrv/gpiointerrupt.o ./emdrv/rtcdriver.o ./emdrv/sleep.o ./emdrv/spidrv.o ./emdrv/tempdrv.o ./emdrv/uartdrv.o ./emdrv/ustimer.o  ./diagnostic/EFR32/diagnostic.o  ./dhcp-client/dhcp-client.o  ./debug-print/debug-print.o  ./command-interpreter2/command-interpreter2-error.o ./command-interpreter2/command-interpreter2-util.o ./command-interpreter2/command-interpreter2.o  ./coap-dispatch/coap-dispatch.o  ./coap-cli/coap-cli.o  ./cli/cli.o  ./buzzer/EFR32/buzzer.o  ./button/EFR32/button.o  ./antenna-stub/antenna-stub.o  ./address-configuration-debug/address-configuration-debug.o  ./adc/EFR32/adc.o  ./Si7021/EFR32/humidity-temperature-si7021.o  ./client-implementation.o ./thread-bookkeeping.o ./thread-callback-stubs.o ./thread-callbacks.o ./thread-cli.o ./thread-coap-dispatch.o ./thread-events.o   -o "client.out" --config "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0/platform/base/hal/micro/cortexm3/efm32/iar-cfg.icf" --config_def APP_BTL=1 --no_wrap_diagnostics "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/mfglib-library-cortexm3-iar-efr32mg1p-efr32/mfglib-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/thread-stack-cortexm3-iar-efr32mg1p-efr32/thread-stack.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/dhcp-library-cortexm3-iar-efr32mg1p-efr32/dhcp-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/sim-eeprom1-library-cortexm3-iar-efr32mg1p-efr32/sim-eeprom1-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/mbedtls-library-cortexm3-iar-efr32mg1p-efr32/mbedtls-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/hal-library-cortexm3-iar-efr32mg1p-efr32/hal-library.a" --entry halEntryPoint --map "C:/Users/subh6068/SimplicityStudio/v4_workspace/client/IAR ARM - Default/client.map" --log_file "C:/Users/subh6068/SimplicityStudio/v4_workspace/client/IAR ARM - Default/client.log" --log initialization,modules,sections,veneers --diag_suppress=Lp012 --redirect _Printf=_PrintfSmall --redirect _Scanf=_ScanfFull  
+ilinkarm  ./version-debug/version-debug.o  ./udp-cli/udp-cli.o  ./tftp-bootload-target/tftp-15-4.o ./tftp-bootload-target/tftp-bootload.o ./tftp-bootload-target/tftp-bootloader-15-4.o ./tftp-bootload-target/tftp-bootloader-server.o ./tftp-bootload-target/tftp-bootloader.o ./tftp-bootload-target/tftp-server.o ./tftp-bootload-target/tftp.o  ./stack/thread-stack/ember-ip-configuration.o  ./slaac-client/slaac-client.o  ./sim-eeprom1/EFR32/sim-eeprom.o  ./serial/EFR32/com.o ./serial/EFR32/ember-printf.o ./serial/EFR32/serial.o  ./sensor-control/sensor_control.o  ./scan-debug/scan-debug.o  ./network-management-cli/network-management-cli.o  ./main/main.o  ./led/EFR32/led.o  ./idle-sleep/idle-sleep.o  ./icmp-debug/icmp-debug.o  ./icmp-cli/icmp-cli.o  ./i2c-driver/EFR32/em_i2c.o ./i2c-driver/EFR32/i2c-driver.o ./i2c-driver/EFR32/i2cspm.o  ./heartbeat/heartbeat.o  ./hal-library/EFR32/assert-crash-handlers.o ./hal-library/EFR32/crc.o ./hal-library/EFR32/cstartup-common.o ./hal-library/EFR32/endian.o ./hal-library/EFR32/faults-v7m.o ./hal-library/EFR32/isr-stubs.o ./hal-library/EFR32/mem-util.o ./hal-library/EFR32/mfg-token.o ./hal-library/EFR32/micro-common.o ./hal-library/EFR32/micro.o ./hal-library/EFR32/mpu.o ./hal-library/EFR32/random.o ./hal-library/EFR32/sleep-efm32.o ./hal-library/EFR32/token-def.o ./hal-library/EFR32/token.o  ./global-address-prefix-debug/global-address-prefix-debug.o  ./external-generated-files/bootloader-interface-app.o ./external-generated-files/bootloader-interface.o  ./emlib/em_adc.o ./emlib/em_cmu.o ./emlib/em_emu.o ./emlib/em_gpio.o ./emlib/em_int.o ./emlib/em_ldma.o ./emlib/em_leuart.o ./emlib/em_mpu.o ./emlib/em_msc.o ./emlib/em_prs.o ./emlib/em_rmu.o ./emlib/em_rtcc.o ./emlib/em_system.o ./emlib/em_timer.o ./emlib/em_usart.o ./emlib/em_wdog.o ./emlib/system_efr32mg1p.o  ./emdrv/dmadrv.o ./emdrv/gpiointerrupt.o ./emdrv/rtcdriver.o ./emdrv/sleep.o ./emdrv/spidrv.o ./emdrv/tempdrv.o ./emdrv/uartdrv.o ./emdrv/ustimer.o  ./diagnostic/EFR32/diagnostic.o  ./dhcp-client/dhcp-client.o  ./debug-print/debug-print.o  ./command-interpreter2/command-interpreter2-error.o ./command-interpreter2/command-interpreter2-util.o ./command-interpreter2/command-interpreter2.o  ./coap-dispatch/coap-dispatch.o  ./coap-cli/coap-cli.o  ./cli/cli.o  ./buzzer/EFR32/buzzer.o  ./button/EFR32/button.o  ./antenna-stub/antenna-stub.o  ./address-configuration-debug/address-configuration-debug.o  ./adc/EFR32/adc.o  ./Si7021/EFR32/humidity-temperature-si7021.o  ./B2Bprotocol/B2Bprotocol.o  ./client-implementation.o ./thread-bookkeeping.o ./thread-callback-stubs.o ./thread-callbacks.o ./thread-cli.o ./thread-coap-dispatch.o ./thread-events.o   -o "client.out" --config "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0/platform/base/hal/micro/cortexm3/efm32/iar-cfg.icf" --config_def APP_BTL=1 --no_wrap_diagnostics "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/mfglib-library-cortexm3-iar-efr32mg1p-efr32/mfglib-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/thread-stack-cortexm3-iar-efr32mg1p-efr32/thread-stack.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/dhcp-library-cortexm3-iar-efr32mg1p-efr32/dhcp-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/sim-eeprom1-library-cortexm3-iar-efr32mg1p-efr32/sim-eeprom1-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/mbedtls-library-cortexm3-iar-efr32mg1p-efr32/mbedtls-library.a" "C:/SiliconLabs/SimplicityStudio/v4/developer/stacks/thread/v2.0.0.0//protocol/thread_2.0/build/hal-library-cortexm3-iar-efr32mg1p-efr32/hal-library.a" --entry halEntryPoint --map "C:/Users/subh6068/SimplicityStudio/v4_workspace/client/IAR ARM - Default/client.map" --log_file "C:/Users/subh6068/SimplicityStudio/v4_workspace/client/IAR ARM - Default/client.log" --log initialization,modules,sections,veneers --diag_suppress=Lp012 --redirect _Printf=_PrintfSmall --redirect _Scanf=_ScanfFull  
 
    IAR ELF Linker V7.30.1.7746/W32 for ARM
    Copyright 2007-2014 IAR Systems AB.
 
-  179 984 bytes of readonly  code memory
+  191 032 bytes of readonly  code memory
       512 bytes of readwrite code memory
-   13 084 bytes of readonly  data memory
-   25 427 bytes of readwrite data memory (+ 148 absolute)
+   13 300 bytes of readonly  data memory
+   25 927 bytes of readwrite data memory (+ 148 absolute)
 
 Errors: none
 Warnings: none
 
-Link time:   0.48 (CPU)   0.49 (elapsed)
+Link time:   0.52 (CPU)   0.52 (elapsed)
 ielftool --srec --verbose "client.out" "client.s37"  
 
    IAR ELF Tool V9.17.0.113 [BUILT at IAR]
@@ -72,5 +72,5 @@ C:\Users\subh6068\SimplicityStudio\v4_workspace\client\IAR ARM - Default>cmd /C 
 operable program or batch file.
  
 
-20:38:55 Build Finished (took 6s.507ms)
+23:06:12 Build Finished (took 6s.955ms)
 

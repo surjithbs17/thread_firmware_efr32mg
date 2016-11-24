@@ -1,0 +1,93 @@
+/*
+ * B2Bprotocol.h
+ *
+ *  Created on: Nov 21, 2016
+ *      Author: Chinmay Shah
+ */
+
+#ifndef B2BPROTOCOL_B2BPROTOCOL_H_
+#define B2BPROTOCOL_B2BPROTOCOL_H_
+
+
+//#define startTypeLenght 2
+//define commandTypeLenght 2
+//#define interfaceTypeLenght 3
+//#define sensorTypeLenght 3
+//#define sensorIDLenght
+#define dataLenght 2
+//define stopTypeLenght 2
+
+#define START_BYTE '$'
+#define STOP_BYTE '#'
+#define MAXPACKETSIZE 1000
+
+//Command Type
+typedef enum typeofCommand{
+	 Readdata,
+	 Replydata,
+	 Command,
+	 Write
+
+};
+
+
+
+
+
+//structure from frame for packet data (Response)
+typedef struct packetFormat{
+	unsigned char start;
+	unsigned char commandType;
+	unsigned char interfaceType;
+	unsigned char subinterfaceType;
+	unsigned char interfaceID;
+	unsigned char destnIPAddress;
+	unsigned char srcIPAddress;
+	//unsigned char originAddress;
+	int data[dataLenght];
+	unsigned char stop;
+}packet;
+
+
+// Each packet data  Location
+typedef enum PacketLocationEnum{
+	loc_packet_start,
+	loc_cmd_type,
+	loc_interface_type,
+	loc_sub_interface_type,
+	loc_interface_ID,
+	loc_dest_IPAddress,
+	loc_src_IPAddress,
+	loc_data,
+	stop_loc
+}PacketLocation;
+
+
+//Packet Type
+typedef enum PacketTypeEnum{
+	 packet_type_read,
+	 packet_type_reply,
+	 packet_type_command,
+	 packet_type_write
+}PacketType;
+
+
+//Interface Type
+typedef enum SubInterfaceTypeEnum{
+	 subinterface_type_Actuator,
+	 subinterface_type_Sensor_Temp,
+	 subinterface_type_Sensor_Hum
+}SubInterface_TypeDef;
+
+//Interface Type
+typedef enum InterfaceTypeEnum{
+	 interface_type_Actuator,
+	 interface_type_Sensor
+}InterfaceType;
+
+
+
+
+
+
+#endif /* B2BPROTOCOL_B2BPROTOCOL_H_ */

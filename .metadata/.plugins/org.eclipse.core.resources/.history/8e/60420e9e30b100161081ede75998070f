@@ -1,0 +1,149 @@
+/*
+ * B2Bprotocl.h
+ *
+ *  Created on: Nov 22, 2016
+ *      Author: Chinmay
+ */
+
+#ifndef B2BPROTOCOL_B2BPROTOCOL_H_
+#define B2BPROTOCOL_B2BPROTOCOL_H_
+
+
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+#include EMBER_AF_API_HAL
+#include "thread-bookkeeping.h"
+
+// If printing is enabled, we will print some diagnostic information about the
+// most recent reset and also during runtime.  On some platforms, extended
+// diagnostic information is available.
+#if defined(EMBER_AF_API_SERIAL) && defined(EMBER_AF_PRINT_ENABLE)
+  #ifdef EMBER_AF_API_DIAGNOSTIC_CORTEXM3
+    #include EMBER_AF_API_DIAGNOSTIC_CORTEXM3
+  #endif
+  static void printResetInformation(void);
+  #define PRINT_RESET_INFORMATION printResetInformation
+  #define emberAfGuaranteedPrint(...) \
+    emberSerialGuaranteedPrintf(APP_SERIAL, __VA_ARGS__)
+  #define emberAfGuaranteedPrintln(format, ...) \
+    emberSerialGuaranteedPrintf(APP_SERIAL, format "\r\n", __VA_ARGS__);
+#else
+  #define PRINT_RESET_INFORMATION()
+  #define emberAfGuaranteedPrint(...)
+  #define emberAfGuaranteedPrintln(...)
+#endif
+
+//#define startTypeLenght 2
+//define commandTypeLenght 2
+//#define interfaceTypeLenght 3
+//#define sensorTypeLenght 3
+//#define sensorIDLenght
+#define dataLenght 2
+//define stopTypeLenght 2
+
+#define START_BYTE '$'
+#define STOP_BYTE '#'
+#define MAXPACKETSIZE 1000
+
+//Sensor IDs supported
+#define SENSOR_DEFAULT_ID 0x00
+#define SENSOR_ID0 0x00
+#define SENSOR_ID1 0x01
+#define SENSOR_ID2 0x02
+#define SENSOR_ID3 0x03
+#define SENSOR_ID4 0x04
+
+
+
+
+
+//structure from frame for packet data (Response)
+typedef struct packetFormat{
+	unsigned char start;
+	unsigned char commandType;
+	unsigned char interfaceType;
+	unsigned char subinterfaceType;
+	unsigned char interfaceID;
+	unsigned char destnIPAddress;
+	unsigned char srcIPAddress;
+	//unsigned char originAddress;
+	uint32_t data;
+	unsigned char stop;
+}packet;
+
+// Each packet data  Location
+typedef enum PacketLocationEnum{
+	loc_packet_start,
+	loc_cmd_type,
+	loc_interface_type,
+	loc_sub_interface_type,
+	loc_interface_ID,
+	loc_dest_IPAddress,
+	loc_src_IPAddress,
+	loc_data,
+	stop_loc
+}PacketLocation_TypeDef;
+//	unsigned char subinterfaceType;
+
+
+//Packet Type
+typedef enum PacketTypeEnum{
+	 packet_type_read,
+	 packet_type_reply,
+	 packet_type_command,
+	 packet_type_write
+}Packet_TypeDef;
+
+
+//Interface Type
+typedef enum SubInterfaceTypeEnum{
+	 subinterface_type_Actuator,
+	 subinterface_type_Sensor_Temp,
+	 subinterface_type_Sensor_Hum
+}SubInterface_TypeDef;
+
+//Interface Type
+typedef enum InterfaceTypeEnum{
+	 interface_type_Actuator,
+	 interface_type_Sensor
+}Interface_TypeDef;
+
+//Command Type supported
+typedef enum CommandType{
+	Read_cmd,
+	Reply_cmd,
+	Write_cmd,
+	Execute_cmd
+ }CommandSupport_TypeDef;
+
+
+ //Sensor Type supported
+ typedef enum SensorType{
+	 Si7021_temperature,
+	 Si7021_Humidity,
+	 Actuator_Light
+
+ }SensorSupport_TypeDef;
+
+typedef enum packetStatus{
+  //PACKET DCODE
+  packet_success,
+  packet_err,
+  packet_command_err,
+  packet_interface_err,
+  packet_subinterface_err,
+  packet_interfaceId_err
+ }PacketStatus_TypeDef;
+
+//Control and status of Actuator/Relay
+typedef enum actuatorStatus{
+   //PACKET DCODE
+   act_ON,//Actuator is ON
+   act_OFF,//Actuator is OFF
+   act_ERR//Actuator ERROR
+
+}actuatorStatus_TypeDef;
+
+
+#endif /* B2BPROTOCOL_B2BPROTOCOL_H_ */

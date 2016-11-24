@@ -27,6 +27,7 @@ S79_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+B2Bprotocol \
 Si7021/EFR32 \
 adc/EFR32 \
 address-configuration-debug \

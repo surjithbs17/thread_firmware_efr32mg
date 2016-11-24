@@ -27,37 +27,5 @@ S79_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-adc/EFR32 \
-address-configuration-debug \
-antenna-stub \
-button/EFR32 \
-buzzer/EFR32 \
-cli \
-coap-cli \
-coap-dispatch \
-command-interpreter2 \
-debug-print \
-dhcp-client \
-diagnostic/EFR32 \
-emdrv \
-emlib \
-external-generated-files \
-global-address-prefix-debug \
-hal-library/EFR32 \
-heartbeat \
-icmp-cli \
-icmp-debug \
-idle-sleep \
-led/EFR32 \
-main \
-network-management-cli \
-scan-debug \
-serial/EFR32 \
 . \
-sim-eeprom1/EFR32 \
-slaac-client \
-stack/thread-stack \
-tftp-bootload-target \
-udp-cli \
-version-debug \
 

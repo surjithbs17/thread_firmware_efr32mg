@@ -2,18 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="adver" key="selection"/>
+		<item value="Error in meas" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="adver"/>
-			<item value="advertise"/>
-			<item value="server"/>
-			<item value="server&gt;"/>
-			<item value="Advertising to"/>
-			<item value="emAppEvents"/>
+			<item value="Error in meas"/>
+			<item value="Error in "/>
+			<item value=" in main"/>
+			<item value="tempe"/>
+			<item value="tempar"/>
+			<item value="ERR"/>
+			<item value="Reporting"/>
+			<item value="Recieved"/>
 		</list>
 		<list key="replacehistory">
 			<item value="r"/>

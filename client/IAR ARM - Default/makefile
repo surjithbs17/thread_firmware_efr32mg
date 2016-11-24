@@ -43,6 +43,7 @@ RM := rm -rf
 -include address-configuration-debug/subdir.mk
 -include adc/EFR32/subdir.mk
 -include Si7021/EFR32/subdir.mk
+-include B2Bprotocol/subdir.mk
 -include subdir.mk
 -include objects.mk
 
