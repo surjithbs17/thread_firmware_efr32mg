@@ -318,7 +318,7 @@ static void reportDataToServer(void)
   //char messageRX[]="chinmay surjith asc ascasca";
   char messageRX[50]="# 0 0 0 0 234:234:234:24 234:234:2342:22 32 $";
   char *messageTx=NULL;
-  char tempMessage[10] = "tes";
+  char *tempMessage = "test data with changes";
   //uint8_t tempdata=0;
   //char messageRX[1000]="$|0|0|0|0|234:234:234:24|234:234:2342:22|#";
   assert(state == REPORT_DATA_TO_SERVER);
@@ -359,20 +359,19 @@ static void reportDataToServer(void)
   // Convert from host-order to network-order before sending so the data can be
   // reliably reconstructed by the server.
   data = HTONL(data);
-  //senddata = atoi(messageTx);
+  senddata = atoi(messageTx);
 
-  //emberAfCorePrint("data from messageTX %ld => %d  , %d   data %d \n",( uint8_t *)TxPacket,   strlen(TxPacket),sizeof(messageTx),data);
+  emberAfCorePrint("data from messageTX %ld => %d  , %d    %ld \n",( uint8_t *)messageTx,   strlen(messageTx),sizeof(messageTx),senddata);
 
   senddata = HTONL(senddata);
-  uint16_t len = strlen(messageTx);
-  //emberAfCorePrint("data HTONL %d => sizeof   %d  ,len  %d",TxPacket,sizeof(TxPacket),len);
-
+  emberAfCorePrint("data HTONL %ld =>",senddata);
 //  status = emberCoapPost(&server,                         clientReportUri,                         //(const uint8_t *)&data,						 (const char *)messageRX,                          sizeof(messageRX),                        processServerDataAck);
   status = emberCoapPost(&server,
                             clientReportUri,
 							(const uint8_t *)messageTx,
-                             //sizeof(tempMessage),
-							len,
+                             sizeof(messageTx),
+							//(const uint8_t *)senddata,
+							//sizeof(senddata),
                             processServerDataAck);
 
   if (status == EMBER_SUCCESS) {
