@@ -1,0 +1,182 @@
+#ISD afv6
+# ISD version: 1.0.0.201610271332-19
+
+# Application configuration
+stackId: com.silabs.sdk.stack.super
+stackRoot: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0
+appId: thread
+architecture: efr32~family[M]~generation[1]~performance[P]~radio[232]~flash[256K]~temp[G]~package[M]~pins[48]+BRD4151A
+deviceName: sensor-actuator-node
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+device: EM3xx
+device: SoC
+device: Router
+device: EFR32
+
+# Plugin configuration
+appPlugin: accelerometer-led=false
+appPlugin: adc=true
+appPlugin: address-configuration-debug=true
+appPlugin: antenna=false
+appPlugin: antenna-stub=true
+appPlugin: ash-v3=false
+appPlugin: ash-v3-stub=false
+appPlugin: bootload-cli=false
+appPlugin: button=true
+appPlugin: button-press=true
+appPlugin: button-stub=false
+appPlugin: buzzer=true
+appPlugin: buzzer-stub=false
+appPlugin: cli=true
+appPlugin: coap-cli=true
+appPlugin: coap-debug=false
+appPlugin: coap-dispatch=true
+appPlugin: coexistence=false
+appPlugin: command-interpreter2=true
+appPlugin: debug-print=true
+appPlugin: dhcp-client=true
+appPlugin: dhcp-library=true
+appPlugin: dhcp-stub-library=false
+appPlugin: diagnostic=true
+appPlugin: diagnostic-stub=false
+appPlugin: ext-device=false
+appPlugin: fem-control=false
+appPlugin: glib=true
+appPlugin: global-address-prefix-debug=false
+appPlugin: hal-library=true
+appPlugin: hal-ncp-library=false
+appPlugin: heartbeat=false
+appPlugin: heartbeat-node-type=true
+appPlugin: host-network-management=false
+appPlugin: humidity-si7021-stub=false
+appPlugin: i2c-driver=false
+appPlugin: i2c-driver-stub=false
+appPlugin: icmp-cli=true
+appPlugin: icmp-debug=true
+appPlugin: idle-sleep=true
+appPlugin: illuminance-si1141-stub=false
+appPlugin: infrared-led=false
+appPlugin: key-matrix=false
+appPlugin: led=true
+appPlugin: led-stub=false
+appPlugin: main=true
+appPlugin: mbedtls-library=true
+appPlugin: mfglib-library=true
+appPlugin: mfglib-stub-library=false
+appPlugin: microphone-codec-msadpcm=false
+appPlugin: microphone-imaadpcm=false
+appPlugin: ncp-library=false
+appPlugin: ncp-spi-link=false
+appPlugin: ncp-uart-link=false
+appPlugin: network-management-cli=true
+appPlugin: occupancy-pyd1698-stub=false
+appPlugin: polling=false
+appPlugin: power-meter-cs5463=false
+appPlugin: power-meter-cs5463-stub=false
+appPlugin: psstore=false
+appPlugin: scan-debug=true
+appPlugin: serial=true
+appPlugin: sim-eeprom1=true
+appPlugin: sim-eeprom2=false
+appPlugin: sim-eeprom2-1to2-upgrade=false
+appPlugin: sim-eeprom2-1to2-upgrade-stub=false
+appPlugin: slaac-client=true
+appPlugin: stm32f103ret-library=false
+appPlugin: temperature-si7053-stub=false
+appPlugin: tftp-bootload-target=true
+appPlugin: thread-stack=true
+appPlugin: udp-cli=true
+appPlugin: udp-debug=false
+appPlugin: unix-library=false
+appPlugin: version-debug=true
+
+# Setup configurations
+{setupId:additionalFiles
+PATH(ISC_RELATIVE):sensor-actuator-node-implementation.c
+}
+{setupId:boardHeader
+}
+{setupId:bookkeeping
+}
+{setupId:bootloader
+}
+{setupId:callbackConfiguration
+emberAfInitCallback:false
+emberAfNetworkStatusCallback:false
+emberResumeNetworkReturn:false
+emberCommissionNetworkReturn:false
+emberJoinNetworkReturn:false
+emberCoapStatusHandler:false
+emberResetNetworkStateReturn:false
+emberButtonPressIsr:false
+emberGetGlobalAddressReturn:false
+emberVerifyBootloadRequest:false
+emberUdpHandler:false
+}
+{setupId:coapDispatch
+POST, borderrouter/discover, borderRouterDiscoveryHandler
+POST, subscriber/subscribe, subscribeHandler
+POST, device/led, ledHandler
+POST, device/buzzer, buzzerHandler
+POST, device/onoffout, onOffOutHandler
+POST, device/reset, netResetHandler
+}
+{setupId:commandLineConfiguration
+on
+announce,announceCommand,,unlocked
+stop-report,stopReportCommand,,unlocked
+rejoin-network,rejoinNetworkCommand,,unlocked
+}
+{setupId:debugConfiguration
+on
+area name off
+appSerial=1
+}
+{setupId:eventConfiguration
+stateEventControl,stateEventHandler
+updateDisplayEventControl,updateDisplayEventHandler
+}
+{setupId:genConfig
+}
+{setupId:halOptions
+}
+{setupId:hwConfig
+active=false
+}
+{setupId:information
+\{key:description
+Border Router Sample Applications
+
+The sensor/actuator sample application can run on EFR32 and EM3xx SoCs.  It is configured by default to run on EFR32, and uses the Graphics Library plugin to display network information on the LCD screen of the WSTK.  
+
+In order to run on EM3xx, the Graphics Library plugin must be disabled.
+
+The border router and sensor/actuator node sample applications demonstrate basic Thread network functionality for a wireless sensor/actuator network and how a border router can route traffic between the mesh and external devices.  This example relies on commissioning to join a device to a network using the official Thread Commissioning app.  Also, in this example, a Node.js/React server runs on the border router itself.  In addition to the ability to route traffic through the border router to the sensor/actuator nodes, the server application facilitates a more direct connection to the sensor/actuator nodes.  The sensor/actuator nodes communicate using the Constrained Application Protocol (CoAP) at the application layer, with UDP serving as the transport layer.  CoAP and UDP are provided by the Silicon Labs Thread stack.
+
+At startup, the sensor/actuator will idle until its networking button 1 is depressed.  This will cause the node to attempt to join a network using its join key.  If the node had joined a network previously, it will simply resume operations using the network parameters stored in non-volatile memory in the stack.  Pressing button 1 on a device with a previously stored address will cause that device to forget the network and try to join a new network.
+
+The Node.js server can request that the border router discover devices.  Then discovery requests, sent as CoAP POST requests to the "borderrouter/discover" URI, inform sensor/actuator nodes in the network about the presence of the external Node.js server.  When a sensor/actuator node without a Node.js server subscription receives the discovery request, it will respond with its globally unique address.  The Node.js server can use this global address to communicate directly with the sensor/actuator node.  The Node.js server starts subscribing to the devices data by sending a "subscriber/subscribe" URI as a CoAP POST.  The sensor/actuator node will begin sending temperature data to the Node.js server as CoAP POST requests to the "device/temperature" URI.  Additionally the sensor/actuator node can send a button 0 press to the "device/button" URI.  The server can also issue CoAP POST requests to the sensor actuator node.  The LED can be turned on with the "device/led" URI and the buzzer can be sounded with the "device/buzzer" URI.  All CoAP POST requests are unicast directly between the Node.js server and the sensor/actuator node and passively route through the border router.
+
+This sample also uses in-band commissioning via an an external commissioner.  This means that a commissioner will provide a border router with the join key for this sensor/actuator device, and then the sensor/actuator and the commissioner will engage in a verification transaction before the device is commissioned onto the network.
+
+All application code is contained in the sensor-actuator-node-implementation.c file within the application directory.
+\}
+}
+{setupId:macros
+}
+{setupId:serial
+}
+{setupId:template
+}
+{setupId:token
+}
+{setupId:zclip
+configuredNetwork:type:ZIGBEE_PRO, name:Primary
+beginEndpointType:Primary
+endEndpointType
+configuredEndpoint:ep:1,pi: -1,di:-1,dv:0,ept:Primary,nwk:Primary
+}
+
+# Plugin options
