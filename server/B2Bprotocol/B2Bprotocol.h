@@ -106,7 +106,8 @@ typedef enum PacketTypeEnum{
 typedef enum SubInterfaceTypeEnum{
 	  subinterface_type_Sensor_Temp,
 	  subinterface_type_Sensor_Hum,
-	  subinterface_type_Actuator
+	  subinterface_type_Actuator,
+	  subinterface_type_Actuator_LED
 
 }SubInterface_TypeDef;
 
@@ -131,7 +132,8 @@ typedef enum CommandType{
  typedef enum SensorType{
 	 Si7021_temperature,
 	 Si7021_Humidity,
-	 Actuator_Light
+	 Actuator_Light,
+	 Actuator_Led
 
  }SensorSupport_TypeDef;
 
@@ -161,6 +163,6 @@ packet FrameAnalysis(char *RxMessage);
 packet splitPacket(char *inputMessage);
 uint32_t ReadSensor(SubInterface_TypeDef subinterfaceType);
 uint32_t ReadCommand(packet RxPacket, PacketStatus_TypeDef error_type);
-
+void SendtoRPI(char * messagetoPi);
 char *  formpacket(packet sendPack);
 #endif /* B2BPROTOCOL_B2BPROTOCOL_H_ */

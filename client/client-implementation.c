@@ -18,6 +18,7 @@
 #include "sensor-control/inc/sensor_control.h"
 #include <../B2Bprotocol/B2Bprotocol.h>
 #include "actuator_control/actuator_control.h"
+#include <string.h>
 // WARNING: This sample application generates a human-readable (i.e., ASCII)
 // join key based on a simple hash of the EUI64 of the node.  This method is
 // used because it provides a predictable yet reasonably unique key suitable
@@ -326,9 +327,10 @@ void serverMessageHandler(const EmberCoapMessage *request)
                       request->payload);
   //emberAfCorePrintln("state %d in CLient Reporter",state);
   //Perform analysis of Frame
+  (RxMessage,sizeof(RxMessage));
   strncpy(RxMessage,(char*)request->payload,request->payloadLength);
-   emberAfCorePrintln("Call Frame Analysis %s",RxMessage);
-   TxPacket=FrameAnalysis(RxMessage);
+   emberAfCorePrintln("Call Frame Analysis %s",(char *)request->payload);
+   TxPacket=FrameAnalysis((char *)request->payload);
    emberAfCorePrint("Tx Packet After Frame Analysis=>");
    printPacket(TxPacket);// print  the packet formed
 
@@ -348,7 +350,7 @@ void serverMessageHandler(const EmberCoapMessage *request)
       emberAfCorePrintln("ERR: Reporting failed: 0x%x", status);
       repeatStateWithDelay(REPORT_PERIOD_MS);
     }
-    networkManagementInfoCommand();
+    //networkManagementInfoCommand();
     emberAfCoreDebugExec(emberAfPrintIpv6Address(&request->remoteAddress));
 }
 

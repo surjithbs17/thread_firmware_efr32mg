@@ -240,7 +240,7 @@ void initilizationSmartHome()
 	  //Initialize Temperature and humidity
 	   //halTemperatureInit();
 	   halHumidityInit();
-	   halToggleLed(BOARDLED0);
+	   //halToggleLed(BOARDLED0);
 
 
 }

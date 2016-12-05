@@ -27,7 +27,7 @@ typedef enum relay_pins{
 void setRelayPin(relaypins_typdef relaypin);
 void clearRelayPin(relaypins_typdef relaypin);
 void InitRelayPins(void);
-void actuatorOn();
+void actuatorOn(uint16_t ms);
 void actuatorOff();
 
 

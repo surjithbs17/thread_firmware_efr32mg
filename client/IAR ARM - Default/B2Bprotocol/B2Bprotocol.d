@@ -148,6 +148,7 @@ B2Bprotocol/B2Bprotocol.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\t
 B2Bprotocol/B2Bprotocol.o: C:\Users\hites\SimplicityStudio\bb_workspace\client\thread-bookkeeping.h
 B2Bprotocol/B2Bprotocol.o: C:\Users\hites\SimplicityStudio\bb_workspace\client\sensor-control\inc\sensor_control.h
 B2Bprotocol/B2Bprotocol.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0\platform\base\hal\micro\cortexm3\diagnostic.h
+B2Bprotocol/B2Bprotocol.o: C:\Users\hites\SimplicityStudio\bb_workspace\client\actuator_control\actuator_control.h
 B2Bprotocol/B2Bprotocol.o: c:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 7.5\arm\inc\c\stdio.h
 B2Bprotocol/B2Bprotocol.o: c:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 7.5\arm\inc\c\ystdio.h
 B2Bprotocol/B2Bprotocol.o: C:\SiliconLabs\SimplicityStudio\v4\developer\stacks\thread\v2.0.0.0\protocol\thread_2.0\app\util\serial\command-interpreter2.h

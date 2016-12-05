@@ -89,7 +89,8 @@ typedef enum PacketTypeEnum{
 typedef enum SubInterfaceTypeEnum{
 	  subinterface_type_Sensor_Temp,
 	  subinterface_type_Sensor_Hum,
-	  subinterface_type_Actuator
+	  subinterface_type_Actuator,
+	  subinterface_type_Actuator_LED
 
 }SubInterface_TypeDef;
 
@@ -147,6 +148,9 @@ packet splitPacket(char *inputMessage);
 uint32_t ReadSensor(SubInterface_TypeDef subinterfaceType);
 uint32_t ReadCommand(packet RxPacket, PacketStatus_TypeDef error_type);
 char *  formpacket(packet sendPack);
+
+uint8_t  ExecuteCommand(packet RxPacket, PacketStatus_TypeDef error_type);
+uint8_t actuateSubinterface(packet RxPacket);
 
 #endif /* B2BPROTOCOL_B2BPROTOCOL_H_ */
 

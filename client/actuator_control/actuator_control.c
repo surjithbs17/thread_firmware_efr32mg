@@ -27,10 +27,12 @@ void clearRelayPin(relaypins_typdef relaypin)
 }
 
 // ON the relay
- void actuatorOn(){
+ void actuatorOn(uint16_t ms){
 	 setRelayPin(RELAY_PIN1);// set the pin
 	 clearRelayPin(RELAY_PIN0);//clear
-	 halCommonDelayMicroseconds(100);//delay of 100 ms
+	 halCommonDelayMilliseconds(ms);//delay of 100 ms
+	 clearRelayPin(RELAY_PIN0);
+	 clearRelayPin(RELAY_PIN1);
  }
 
 

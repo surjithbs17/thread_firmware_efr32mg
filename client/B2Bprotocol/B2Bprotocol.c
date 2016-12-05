@@ -22,6 +22,7 @@
  */
 #include "../B2Bprotocol/B2Bprotocol.h"
 #include "sensor-control/inc/sensor_control.h"
+#include "actuator_control/actuator_control.h"
 #include <string.h>
 #include <thread-bookkeeping.h>
 #include <stdio.h>
@@ -63,6 +64,7 @@ char *  formpacket(packet sendPack){
 
 packet splitPacket(char inputMessage[]){
 	packet splitPacket;
+	emberAfCorePrintln("Message in split %s ",inputMessage);
 	sscanf(inputMessage,"%c %d %d %d %d %d %d %c",
 					&splitPacket.start,
 					&splitPacket.mainSourceType,
@@ -166,6 +168,64 @@ uint32_t ReadCommand(packet RxPacket, PacketStatus_TypeDef error_type){
 		return retdata;
 }
 
+//Packet as other details such as one and  two
+uint8_t actuateSubinterface(packet RxPacket){
+	uint8_t retType=1;
+	switch(RxPacket.subinterfaceType){
+		case subinterface_type_Actuator:
+			emberAfCorePrintln("ON the Light id =>%d on(1)/off(0)5d ",RxPacket.interfaceID,RxPacket.data);
+							if (RxPacket.data){//check it is off or on
+								actuatorOn(100);
+							}
+							else{
+								actuatorOff();//off
+							}
+			break;
+		case subinterface_type_Actuator_LED:
+
+				if (RxPacket.data){
+					emberAfCorePrintln("ON the LED %d",RxPacket.interfaceID);
+					halSetLed(RxPacket.interfaceID);
+				}
+				else{
+					emberAfCorePrintln("Off the LED %d",RxPacket.interfaceID);
+					halClearLed(RxPacket.interfaceID);
+				}
+
+			break;
+		default :
+			retType =0;
+			emberAfCorePrintln("Incorrect Sub type ");
+	}
+	return retType;
+}
+
+uint8_t  ExecuteCommand(packet RxPacket, PacketStatus_TypeDef error_type){
+		int32_t status=0;// For status of command execution
+		emberAfCorePrintln("Type of Interface %d",RxPacket.interfaceType);
+
+		if(error_type == packet_success){	//Check the Type of Sensor
+
+			switch(RxPacket.interfaceType){
+				case(interface_type_Actuator):
+										emberAfCorePrintln("Actuator");
+										//data=ReadSensor(RxPacket.subinterfaceType);
+										status=actuateSubinterface(RxPacket);
+										break;
+				case(interface_type_Sensor):
+										emberAfCorePrintln("Sensor for excute");
+										//data=ReadSensor(RxPacket.subinterfaceType);
+										break;
+				default:
+						error_type=packet_interface_err;
+						emberAfCorePrintln("Default choice ");
+			}
+
+		}
+
+
+		return status;
+}
 
 //start|source type|commandType|interfaceType|subinterfaceType|interfaceID|destnIPAddress|srcIPAddress|data|stop
 packet FrameAnalysis(char RxMessage[]){
@@ -192,6 +252,7 @@ packet FrameAnalysis(char RxMessage[]){
 			TxPacket.interfaceType=RxPacket.interfaceType;
 			TxPacket.subinterfaceType=RxPacket.subinterfaceType;
 			TxPacket.interfaceID=RxPacket.interfaceID;
+			TxPacket.data=RxPacket.data;
 			//strcpy(TxPacket.destnIPAddress,RxPacket.srcIPAddress);
 			//strcpy(TxPacket.srcIPAddress,RxPacket.destnIPAddress);
 
@@ -230,7 +291,8 @@ packet FrameAnalysis(char RxMessage[]){
 							break;
 
 			case(Execute_cmd):
-							emberAfCorePrintln("Call Execute Command");
+						 	emberAfCorePrintln("Call Execute Command");
+							ExecuteCommand(RxPacket,error_type);
 							break;
 			default:
 							error_type=packet_command_err;

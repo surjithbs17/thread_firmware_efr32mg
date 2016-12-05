@@ -481,9 +481,10 @@ static void acquireIP(void){
 	  emberAfCorePrintln("Acquire Client IP Message to all clients=> %s",messageSendtoClient);
 	  status = emberCoapPost(&allThreadNodes,serverReportUri,(const uint8_t *)messageSendtoClient,len, processClientDataAck);
 	  emberAfCorePrintln("Status of multi-cast request to client=> 0x%x", status);
+
 	  //Need to change this
 	  setNextStateWithDelay(ADVERTISE,ADVERTISEMENT_PERIOD_MS);
-	  emberAfCorePrintln("To Application mode");
+
 }
 
 static void advertise(void)
@@ -528,7 +529,8 @@ static void advertise(void)
   //End of request send to user
   */
   //repeatStateWithDelay(ADVERTISEMENT_PERIOD_MS);
-  setNextStateWithDelay(ACQUIRE_CLIENT_IP,ADVERTISEMENT_PERIOD_MS);
+  //setNextStateWithDelay(ACQUIRE_CLIENT_IP,ADVERTISEMENT_PERIOD_MS);
+  setNextStateWithDelay(ADVERTISE,ADVERTISEMENT_PERIOD_MS);
   //setNextStateWithDelay(APPLICATION,ADVERTISEMENT_PERIOD_MS);
 
 }
@@ -588,11 +590,12 @@ void clientReportHandler(const EmberCoapMessage *request)
 		}
 			if(!ClientNotFound){
 				MEMCOPY(ClientListIPS[ClientCounts],IPAddressString,sizeof(IPAddressString));
-				emberAfCorePrintln("Matched Not IP found ");
+				SendtoRPI((char *)IPAddressString);
+				emberAfCorePrintln("No Matched IP found within list");
 			}
 			else
 			{
-				emberAfCorePrintln("Matched IP found ,Therfore not stored");
+				emberAfCorePrintln("Matched IP found ,Therefore not stored");
 			}
 	}
 
@@ -683,10 +686,10 @@ void stateEventHandler(void)
   case ADVERTISE:
       advertise();
       break;
-  case ACQUIRE_CLIENT_IP:
-	   acquireIP();
-	   emberAfCorePrintln("Acquire IP Client ");
-       break;
+  //case ACQUIRE_CLIENT_IP:
+  //	   acquireIP();
+  //	   emberAfCorePrintln("Acquire IP Client ");
+  //     break;
   case RESET_NETWORK_STATE:
     resetNetworkState();
     break;

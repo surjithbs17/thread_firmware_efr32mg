@@ -16,6 +16,15 @@
  */
 #include "../B2Bprotocol/B2Bprotocol.h"
 
+
+// Send to RPI in format
+void SendtoRPI(char * messagetoPi){
+
+	emberAfCorePrintln("MFPI:%s",messagetoPi);
+}
+
+
+
 //Convert Packet into String
 char *  formpacket(packet sendPack){
 	static char sendMessage[500];
@@ -40,6 +49,7 @@ char *  formpacket(packet sendPack){
 
 packet splitPacket(char inputMessage[]){
 	packet splitPacket;
+	emberAfCorePrintln("Message in split %s ",inputMessage);
 	sscanf(inputMessage,"%c %d %d %d %d %d %d %c",
 					&splitPacket.start,
 					&splitPacket.mainSourceType,
@@ -131,7 +141,6 @@ uint32_t ReadSensor(SubInterface_TypeDef subinterface){
 	return sensorData;
 }
 
-
 uint32_t ReadCommand(packet RxPacket, PacketStatus_TypeDef error_type){
 		int32_t data=0;
 		emberAfCorePrintln("Type of Interface %d",RxPacket.interfaceType);
@@ -157,6 +166,9 @@ uint32_t ReadCommand(packet RxPacket, PacketStatus_TypeDef error_type){
 
 		return data;
 }
+
+
+
 
 void ReplyCommand(packet RxPacket){
 	int32_t data=0;
@@ -262,7 +274,7 @@ packet FrameAnalysis(char RxMessage[]){
 		TxPacket.mainSourceType=source_type_Server;
 		printPacket(TxPacket);
 		TxMessage=formpacket(TxPacket);
-		emberAfCorePrintln("MFPI:%s",TxMessage);
+		SendtoRPI(TxMessage);
 	}
 
 
